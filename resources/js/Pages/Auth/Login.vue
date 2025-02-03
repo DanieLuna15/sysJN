@@ -31,63 +31,62 @@ const submit = () => {
 
 <template>
     <GuestLayout>
+
         <Head title="Log in" />
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+        <div v-if="status">
             {{ status }}
         </div>
 
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="email" value="Email" />
+        <form @submit.prevent="submit" class="form w-100" novalidate="novalidate" id="kt_sign_in_form">
 
-                <TextInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autofocus
-                    autocomplete="username"
-                />
+            <!--begin::Heading-->
+            <div class="text-center mb-10">
+                <!--begin::Title-->
+                <h1 class="text-dark mb-3">Inicio de Sesión</h1>
+                <!--end::Title-->
+                <!--begin::Link-->
+                <div class="text-gray-400 fw-bold fs-4">Eres nuevo acá?
+                    <a href="/register"
+                        class="link-primary fw-bolder">Registrate</a>
+                </div>
+                <!--end::Link-->
+            </div>
+
+            <div class="fv-row mb-10">
+                <InputLabel for="email" value="Email: " />
+
+                <TextInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus
+                    autocomplete="username" />
 
                 <InputError class="mt-2" :message="form.errors.email" />
             </div>
 
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+            <div class="fv-row mb-10">
+                <InputLabel for="password" value="Password: " />
 
-                <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    autocomplete="current-password"
-                />
+                <TextInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required
+                    autocomplete="current-password" />
 
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
-            <div class="block mt-4">
+            <div class="my-5">
                 <label class="flex items-center">
                     <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ms-2 text-sm text-gray-600">Remember me</span>
+                    <span class="ms-3 text-sm text-gray-600">Remember me</span>
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <Link
-                    v-if="canResetPassword"
-                    :href="route('password.request')"
-                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                    Forgot your password?
-                </Link>
-
-                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <div class="fv-row mb-10 text-center">
+                <PrimaryButton class="btn-lg w-100 mb-3" :class="{ 'opacity-25': form.processing }"
+                    :disabled="form.processing">
                     Log in
                 </PrimaryButton>
+
+                <Link v-if="canResetPassword" :href="route('password.request')" class="link-primary fw-bolder">
+                Forgot your password?
+                </Link>
             </div>
         </form>
     </GuestLayout>
