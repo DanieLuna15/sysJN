@@ -47,8 +47,7 @@ const submit = () => {
                 <!--end::Title-->
                 <!--begin::Link-->
                 <div class="text-gray-400 fw-bold fs-4">Eres nuevo acá?
-                    <a href="/register"
-                        class="link-primary fw-bolder">Registrate</a>
+                    <a href="/register" class="link-primary fw-bolder">Registrate</a>
                 </div>
                 <!--end::Link-->
             </div>
@@ -81,7 +80,10 @@ const submit = () => {
             <div class="fv-row mb-10 text-center">
                 <PrimaryButton class="btn-lg w-100 mb-3" :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing">
-                    Log in
+                    <span v-if="!form.processing" class="indicator-label"> Login </span>
+                    <span v-else>
+                        Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                    </span>
                 </PrimaryButton>
 
                 <Link v-if="canResetPassword" :href="route('password.request')" class="link-primary fw-bolder">
