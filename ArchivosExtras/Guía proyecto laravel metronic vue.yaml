@@ -1,0 +1,23 @@
+Guía proyecto laravel metronic vue
+
+composer create-project laravel/laravel sysJN 10.*
+
+INSTALAR LARAVEL BREEZE
+composer require laravel/breeze --dev
+php artisan breeze:install
+npm install
+
+PARA EJECUTAR SEEDERS
+php artisan db:seed
+
+COMO USAREMOS METRONIC ELIMINAMOS TAILWIND
+npm remove @tailwindcss/forms autoprefixer postcss taiwindcss
+
+INSTALAR DEPENDENCIAS DE METRONIC
+npm i bootstrap@5.1.3 
+npm i @popperjs/core@2.10.1 o 2
+
+
+
+
+
